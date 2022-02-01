@@ -1,0 +1,24 @@
+1.
+- For large software projects, using Makefiles can substantianlly reduce build times if only a few source files have changed.
+- If your project links with a lot of source file with the main file, so when you want to compile it you must write a long command to the terminal to do it. However, Makefiles can simplify the command for you, just setup the Makefiles then everytimes your project is changed you can easily compile it with "make all" command.
+2.
+- I found that there is multiway to write a Makefile. In this exercise i choose the easiest way:
+- Give that the my main.c file, Makefile and Header folderis in the "test" folder, and main.c includes the header file hello.h in the "Header" folder. Header folder contains hello.c too.
+- The content in the Makefile is:
+all: main.o hello.o
+	gcc main.o hello.o -o hello
+main.o: main.c ~/Desktop/Code/Test/Header/hello.h
+	gcc -c main.c
+hello.o: ~/Desktop/Code/Test/Header/hello.h ~/Desktop/Code/Test/Header/hello.c
+	cd Header && gcc -c hello.c && mv hello.o ~/Desktop/Code/Test/
+clean:
+	rm -f *.o hello
+3.
+- The out put of the Line A is "PARENT: value = 5"
+Explain: 
+ - The pid is a parameter to store the return value of the fork function. If pid is zero then that proccess is a child proccess, else it is the parent proccess.
+ - First the pid's value is 0 because fork function created a child proccess, then this proccess is executed first (with my computer). Because the pid is 0 so it go to the first condition of the if statement. Then the value parameter is plus with 5 so this value's value is 20. 
+ - Then the proccess return to the parent proccess, now, the pid's value is greater than 0 because the proccess is parent proccess. And the value parameter in this parent proccess is allocated in different access with the child proccess so it's still 5
+ - The program jumped to the second condition of the if statement and executed the code in this case. So the final input will be PARENT value = 5.
+
+

@@ -1,0 +1,8 @@
+mkdir 2010468
+cd 2010468
+touch example.txt
+vi example.txt
+ls
+head -n -0 example.txt
+head -n 5 example.txt
+tail -n 5 example.txt
